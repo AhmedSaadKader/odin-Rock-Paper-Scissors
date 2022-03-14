@@ -1,19 +1,25 @@
-console.log(Math.random()*3)
-
 const HAND = ['rock', 'paper', 'scissors']
 
+let playerHand, computerHand;
+
 function computerPlay () {
-    const computerHand = HAND[Math.floor(Math.random ()*3)]
+    computerHand = HAND[Math.floor(Math.random ()*3)]
     console.log(computerHand)
+    return computerHand
 }
 
 function humanPlay () {
-    const playerHand = prompt('What is your hand?')
+    playerHand = prompt('What is your hand?')
+    return playerHand
 }
 
 computerPlay()
 humanPlay()
 
-if (computerHand == 'rock' && PlayerHand == "paper" || computerHand == "") {
-    alert('You win: paper beats rock')
-} else if (computerHand )
+
+if (computerHand == 'rock' && playerHand == "paper"
+ || computerHand == "paper" && playerHand == "scissors"
+ || computerHand == "scissors" && playerHand == "rock") {
+    alert(`You win: ${playerHand} beats ${computerHand}`)
+} 
+// else if (computerHand )
