@@ -1,0 +1,36 @@
+body {
+    height: 100%;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    text-align: center;
+    }
+header * {
+    margin: auto;
+}
+
+#buttons {
+    display: flex;
+}
+
+button {
+    padding: 0;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+img {
+    margin: auto;
+    max-width: 100%;
+    min-height: 0;
+    height: auto;
+    border-radius: 50%;
+}
+
+#game-over {
+    text-align: center;
+}
