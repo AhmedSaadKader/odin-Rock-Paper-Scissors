@@ -1,5 +1,5 @@
 const HAND = ['rock', 'paper', 'scissors']
-let playerHand, computerHand, playerScore = 0, computerScore = 0; 
+let playerHand, computerHand, playerScore = 0, computerScore = 0, gameNumber= 0; 
 const rockButton = document.getElementById('rock')
 const paperButton = document.getElementById('paper')
 const scissorsButton = document.getElementById('scissors')
@@ -7,6 +7,7 @@ const computerChoiceElement = document.getElementById('computer-choice')
 const playerChoiceElement = document.getElementById('player-choice')
 const outcomeElement = document.getElementById('outcome')
 const ScoreElement = document.getElementById('score')
+const gameOver = document.getElementById('game-over')
 
 function computerPlay () {
     computerHand = HAND[Math.floor(Math.random ()*3)]
@@ -20,10 +21,6 @@ function humanPlay (e) {
     playerHand = e.target.innerText.toLowerCase()
     playerChoiceElement.innerText = playerHand
     return playerHand
-}
-
-function updateScorePlayerWin(playerHand, computerHand){
-
 }
 
 function playRound(playerHand, computerHand){
@@ -46,20 +43,26 @@ function playRound(playerHand, computerHand){
     }
 }
 
-function game (playerHand){
-    // for (let i = 0; i < 5; i++) {
-        computerPlay();        
-        console.log(playerHand)
-        // playerSelection = document.getElementById('playerHand').innerHTML = playerHand 
-        playRound(playerHand, computerHand);
-    // }
+function game (e){
+        if (gameNumber < 5){
+            humanPlay(e)
+            computerPlay();        
+            playRound(playerHand, computerHand);
+            gameNumber += 1
+        } else if (gameNumber === 5){
+            if (playerScore > computerScore){
+                gameOver.innerText = 'Game is over\nYou win'
+            }else if (computerScore > playerScore){
+                gameOver.innerText = 'Game is over\nYou lose'
+            }else {
+                gameOver.innerText = 'Game is over\nIt\'s a tie'
+            }
+        }
 }
 
 
 
-rockButton.addEventListener('click', (e) => humanPlay(e))
-rockButton.addEventListener('click', () => game(playerHand))
-paperButton.addEventListener('click', (e) => humanPlay(e))
-paperButton.addEventListener('click', () => game(playerHand))
-scissorsButton.addEventListener('click', (e) => humanPlay(e))
-scissorsButton.addEventListener('click', () => game(playerHand))
+// rockButton.addEventListener('click', (e) => humanPlay(e))
+rockButton.addEventListener('click', (e) => game(e))
+paperButton.addEventListener('click', (e) => game(e))
+scissorsButton.addEventListener('click', (e) => game(e))
