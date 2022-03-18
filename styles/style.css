@@ -16,11 +16,10 @@ header * {
     display: flex;
 }
 
-button {
+#buttons * {
     padding: 0;
     margin: auto;
     border-radius: 50%;
-    border: 2px solid black;
 }
 
 img {

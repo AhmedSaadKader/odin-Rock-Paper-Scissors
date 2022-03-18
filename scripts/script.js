@@ -9,6 +9,8 @@ const playerChoiceElement = document.getElementById('player-choice')
 const scoreOutcomeDiv = document.getElementById('score-outcome')
 const ScoreElement = document.getElementById('score')
 const gameOver = document.getElementById('game-over')
+const modal = document.getElementById('modal')
+const playAgainBtn = document.getElementById('play-again')
 
 function computerPlay () {
     computerHand = HAND[Math.floor(Math.random ()*3)]
@@ -49,12 +51,13 @@ function game (e){
             playRound(playerHand, computerHand);
             gameNumber += 1
             if (gameNumber === 5){
+                modal.showModal()
                 choicesDiv.remove()
                 scoreOutcomeDiv.remove()
                 if (playerScore > computerScore){
-                    gameOver.innerText = 'Game over\nYou win'
+                    gameOver.innerText = 'It\'s your lucky day\nYou win'
                 }else if (computerScore > playerScore){
-                    gameOver.innerText = 'Game over\nYou lose'
+                    gameOver.innerText = 'It\'s not your lucky day\nYou lose'
                 }else {
                     gameOver.innerText = 'Game over\nIt\'s a tie'
                 }
@@ -70,3 +73,6 @@ function game (e){
 rockButton.addEventListener('click', (e) => game(e))
 paperButton.addEventListener('click', (e) => game(e))
 scissorsButton.addEventListener('click', (e) => game(e))
+playAgainBtn.addEventListener('click', () =>{
+    window.location.reload()
+})
