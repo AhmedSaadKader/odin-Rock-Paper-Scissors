@@ -38,7 +38,7 @@ function playRound(playerHand, computerHand){
         ScoreElement.innerText = `Score is Player:${playerScore}---Computer: ${computerScore}`
     } 
     else {
-        // outcomeElement.innerText = "It's a tie!"
+        ScoreElement.innerText = `Score is Player:${playerScore}---Computer: ${computerScore}`
     }
 }
 
