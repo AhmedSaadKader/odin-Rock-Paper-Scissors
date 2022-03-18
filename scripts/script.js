@@ -1,6 +1,6 @@
 const HAND = ['rock', 'paper', 'scissors']
 
-let playerHand, computerHand, playerScore = 0, computerScore = 0;
+let playerHand, computerHand, playerScore = 0, computerScore = 0, playerSelection; 
 
 function computerPlay () {
     computerHand = HAND[Math.floor(Math.random ()*3)]
@@ -10,7 +10,8 @@ function computerPlay () {
 
 function humanPlay () {
     playerHand = prompt('What is your hand?').toLowerCase()
-    return playerHand
+    
+    return playerHand, playerSelection
 }
 
 function playRound(playerHand, computerHand){
@@ -39,6 +40,7 @@ function game (){
     for (let i = 0; i < 5; i++) {
         computerPlay();        
         humanPlay();
+        // playerSelection = document.getElementById('playerHand').innerHTML = playerHand 
         playRound(playerHand, computerHand);
     }
 }
